@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "python_wrapper_version": "0.6.8",
+  "c_library_version": "0.6.4 (Oct 20 2025 20:23:51)",
+  "source": "talib.abstract.Function.output_names",
+  "multi_output_functions": {
+    "AROON": ["aroondown", "aroonup"],
+    "BBANDS": ["upperband", "middleband", "lowerband"],
+    "HT_PHASOR": ["inphase", "quadrature"],
+    "HT_SINE": ["sine", "leadsine"],
+    "MACD": ["macd", "macdsignal", "macdhist"],
+    "MACDEXT": ["macd", "macdsignal", "macdhist"],
+    "MACDFIX": ["macd", "macdsignal", "macdhist"],
+    "MAMA": ["mama", "fama"],
+    "MINMAX": ["min", "max"],
+    "MINMAXINDEX": ["minidx", "maxidx"],
+    "STOCH": ["slowk", "slowd"],
+    "STOCHF": ["fastk", "fastd"],
+    "STOCHRSI": ["fastk", "fastd"]
+  }
+}
