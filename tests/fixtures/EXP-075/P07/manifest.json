@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "candidate_code_sha256": "46f721b64588dd55d8b98e9f72eb746fc1553a83cb812cc6b2022af422ec3d8f",
+  "hypothesis": {
+    "hypothesis_id": "exp-075-p07-aroon",
+    "mechanism_ids": ["exp-074-p07"],
+    "title": "Canonical TA-Lib AROON down output",
+    "rationale": "Derived deterministic validator fixture; no performance data.",
+    "expected_regimes": ["fixture-only"],
+    "entry_logic": ["TA-Lib AROON(high, low, timeperiod=14) aroondown output is above 70."],
+    "exit_neutral_horizons": [48],
+    "controls": ["Structural output-binding validation only."],
+    "failure_conditions": ["The canonical output is not bound at tuple position zero."],
+    "required_timeframes": ["1h"],
+    "schema_version": 2,
+    "indicator_contracts": [
+      {
+        "function": "AROON",
+        "keyword_parameters": [
+          {"name": "timeperiod", "value": 14}
+        ],
+        "output_bindings": [
+          {"output": "aroondown", "target": "aroondown"}
+        ]
+      }
+    ]
+  }
+}

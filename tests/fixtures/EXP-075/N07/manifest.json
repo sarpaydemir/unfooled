@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "candidate_code_sha256": "58f5cdc0e86ad54a4d336f275e1c2e49cf0c42ecf557cf7b193a4c2741243814",
+  "hypothesis": {
+    "hypothesis_id": "exp-075-n07-aroon-output-order",
+    "mechanism_ids": ["exp-074-n07"],
+    "title": "Mislabeled TA-Lib AROON down output",
+    "rationale": "Derived negative validator fixture; no performance data.",
+    "expected_regimes": ["fixture-only"],
+    "entry_logic": ["TA-Lib AROON(high, low, timeperiod=14) aroondown output is above 70."],
+    "exit_neutral_horizons": [48],
+    "controls": ["Structural output-binding validation only."],
+    "failure_conditions": ["The code binds arounup at the declared aroondown target."],
+    "required_timeframes": ["1h"],
+    "schema_version": 2,
+    "indicator_contracts": [
+      {
+        "function": "AROON",
+        "keyword_parameters": [
+          {"name": "timeperiod", "value": 14}
+        ],
+        "output_bindings": [
+          {"output": "aroondown", "target": "aroondown"}
+        ]
+      }
+    ]
+  }
+}
