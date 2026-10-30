@@ -1,0 +1,43 @@
+[project]
+name = "unfooled"
+version = "0.1.0"
+description = "A crypto research pipeline built not to fool itself: frozen splits, leakage gates, calibrated LLM judges and evidence-checked LLM extraction."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Sarp Aydemir" }]
+# uv's CPython 3.12.15 build (bundled SQLite 3.53.1) reports rowcount -1 for INSERT,
+# which breaks the idempotent SQLite ledger; 3.13 and 3.14 builds with the same SQLite are fine.
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "pandas",
+    # pandas.read_feather, used by event_study.load_frame on local OHLCV files.
+    "pyarrow",
+    # Pinned: research_factory/talib_multi_output_v1.json records this exact runtime.
+    "ta-lib==0.6.8",
+]
+
+[dependency-groups]
+dev = ["ruff", "pytest"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["research_factory"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# Pyflakes plus pycodestyle errors: the classic default set, pinned so newer ruff
+# releases with wider defaults don't change what CI checks.
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Two tests build small fixtures with lambda assignments; kept as written.
+"tests/*" = ["E731"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

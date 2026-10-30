@@ -1,0 +1,14 @@
+# environment and secrets
+.env
+.venv/
+
+# caches
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+
+# local research state and data: never committed
+.research_factory/
+data/
+user_data/
